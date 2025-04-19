@@ -154,7 +154,7 @@ class _BodyState extends State<_Body> {
       CameraUpdate.newCameraPosition(
         CameraPosition(
             //中心点
-            target: LatLng(latitude: 31.230378, longitude: 121.473658),
+            target: LatLng(31.230378, 121.473658),
             //缩放级别
             zoom: 13,
             //俯仰角0°~45°（垂直与地图时为0）
@@ -195,8 +195,8 @@ class _BodyState extends State<_Body> {
     _mapController?.moveCamera(
       CameraUpdate.newLatLngBounds(
         LatLngBounds(
-          southwest: LatLng(latitude: 33.789925, longitude: 104.838326),
-          northeast: LatLng(latitude: 38.740688, longitude: 114.647472),
+          southwest: LatLng(33.789925, 104.838326),
+          northeast: LatLng(38.740688, 114.647472),
         ),
         15.0,
       ),

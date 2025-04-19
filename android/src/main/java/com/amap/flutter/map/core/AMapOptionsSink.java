@@ -14,6 +14,9 @@ import com.amap.api.maps.model.MyTrafficStyle;
  */
 public interface AMapOptionsSink {
 
+    //language AMap.CHINESE 表示中文，即"zh_cn", AMap.ENGLISH 表示英文，即"en"
+    public void setMapLanguage(String mapLanguage);
+
     public void setCamera(CameraPosition camera);
 
     public void setMapType(int mapType);

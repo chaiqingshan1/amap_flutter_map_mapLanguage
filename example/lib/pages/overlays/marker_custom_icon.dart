@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:amap_flutter_base/amap_flutter_base.dart';
 import 'package:amap_flutter_map/amap_flutter_map.dart';
 import 'package:amap_flutter_map_example/base_page.dart';
@@ -18,8 +20,8 @@ class _Body extends StatefulWidget {
 
 class _BodyState extends State<_Body> {
   static final LatLng markerPosition = const LatLng(
-    latitude: 39.909187,
-    longitude: 116.397451,
+    39.909187,
+    116.397451,
   );
   final Map<String, Marker> _initMarkerMap = <String, Marker>{};
   String? _currentMarkerId;
@@ -77,11 +79,21 @@ class _BodyState extends State<_Body> {
 
   @override
   Widget build(BuildContext context) {
+    var mapLanguage = "";
+    if (Platform.isIOS) {
+      mapLanguage = "0"; //"0" 中文 : "1"  英文;
+    } else if (Platform.isAndroid) {
+      mapLanguage = "zh_cn"; //"zh_cn" 中文 : "en" 英文;
+    }
+
     _initMarker(context);
+
     final AMapWidget amap = AMapWidget(
       apiKey: ConstConfig.amapApiKeys,
+      mapLanguage: mapLanguage,
       markers: Set<Marker>.of(_initMarkerMap.values),
     );
+
     return Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,

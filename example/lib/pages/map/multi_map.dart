@@ -35,7 +35,7 @@ class _MultiMapDemoState extends State<_MultiMapDemoBody> {
           Expanded(
             child: AMapWidget(
               initialCameraPosition: CameraPosition(
-                target: LatLng(latitude: 31.230378, longitude: 121.473658),
+                target: LatLng(31.230378, 121.473658),
               ),
             ),
           ),

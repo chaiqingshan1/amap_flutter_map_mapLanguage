@@ -102,6 +102,14 @@
     if ([dict isKindOfClass:[NSDictionary class]] == NO || dict == nil || dict.count == 0) {
         return;
     }
+
+    //切换中英文
+    NSNumber *mapLanguage = dict[@"mapLanguage"];
+    if (mapLanguage) {
+        self.mapLanguage = mapLanguage;
+    }
+
+
     //地图类型
     NSNumber *mapType = dict[@"mapType"];
     if (mapType) {

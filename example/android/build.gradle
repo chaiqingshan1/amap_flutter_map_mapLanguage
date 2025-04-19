@@ -1,18 +1,38 @@
 buildscript {
     repositories {
-        google()
-        mavenCentral()
+        // 阿里云镜像配置（推荐）
+        maven { url 'https://maven.aliyun.com/repository/public' } // 聚合了多个仓库
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/repository/apache-snapshots' }
+
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public' }
+
+//        google()
+//        mavenCentral()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.4'
+        classpath 'com.android.tools.build:gradle:7.4.2'
     }
 }
 
 allprojects {
     repositories {
-        google()
-        mavenCentral()
+        // 阿里云镜像配置（推荐）
+        maven { url 'https://maven.aliyun.com/repository/public' } // 聚合了多个仓库
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/repository/apache-snapshots' }
+
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public' }
+
+//        google()
+//        mavenCentral()
     }
 }
 
@@ -24,6 +44,6 @@ subprojects {
     project.evaluationDependsOn(':app')
 }
 
-task clean(type: Delete) {
+tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }

@@ -38,7 +38,7 @@ class _State extends State<_Body> {
   void _onMapCreated(AMapController controller) {}
 
   LatLng _createLatLng(double lat, double lng) {
-    return LatLng(latitude: lat, longitude: lng);
+    return LatLng(lat, lng);
   }
 
   List<LatLng> _createPoints() {
@@ -119,7 +119,7 @@ class _State extends State<_Body> {
     List<LatLng> currentPoints = polygon.points;
     List<LatLng> newPoints = <LatLng>[];
     newPoints.addAll(currentPoints);
-    newPoints.add(LatLng(latitude: 39.828809, longitude: 116.360364));
+    newPoints.add(LatLng(39.828809, 116.360364));
 
     setState(() {
       _polygons[selectedPolygonId!] = polygon.copyWith(
@@ -142,7 +142,7 @@ class _State extends State<_Body> {
   Widget build(BuildContext context) {
     final AMapWidget map = AMapWidget(
       initialCameraPosition: CameraPosition(
-        target: LatLng(latitude: 39.828809, longitude: 116.360364),
+        target: LatLng(39.828809, 116.360364),
         zoom: 13,
       ),
       onMapCreated: _onMapCreated,

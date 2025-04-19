@@ -24,8 +24,8 @@ class _BodyState extends State<_Body> {
     final AMapWidget amap = AMapWidget(
       apiKey: ConstConfig.amapApiKeys,
       limitBounds: LatLngBounds(
-        southwest: LatLng(latitude: 39.83309, longitude: 116.290176),
-        northeast: LatLng(latitude: 39.99951, longitude: 116.501663),
+        southwest: LatLng(39.83309, 116.290176),
+        northeast: LatLng(39.99951, 116.501663),
       ),
     );
     return Container(

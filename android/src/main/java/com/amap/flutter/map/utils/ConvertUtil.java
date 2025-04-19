@@ -119,8 +119,8 @@ public class ConvertUtil {
                 return CameraUpdateFactory.newLatLngZoom(toLatLng(data.get(1)), toFloat(data.get(2)));
             case "scrollBy":
                 return CameraUpdateFactory.scrollBy( //
-                                                     toFloatPixels(data.get(1)), //
-                                                     toFloatPixels(data.get(2)));
+                        toFloatPixels(data.get(1)), //
+                        toFloatPixels(data.get(2)));
             case "zoomBy":
                 if (data.size() == 2) {
                     return CameraUpdateFactory.zoomBy(toFloat(data.get(1)));
@@ -188,10 +188,18 @@ public class ConvertUtil {
      */
     public static void interpretAMapOptions(Object o, @NonNull AMapOptionsSink sink) {
         try {
+
+
+
             final Map<?, ?> data = (Map<?, ?>) o;
             final Object mapType = data.get("mapType");
             if (mapType != null) {
                 sink.setMapType(toLocalMapType(toInt(mapType)));
+            }
+
+            final Object mapLanguage = data.get("mapLanguage");
+            if (null != mapLanguage) {
+                sink.setMapLanguage(toString(mapLanguage));
             }
 
             final Object buildingsEnabled = data.get("buildingsEnabled");

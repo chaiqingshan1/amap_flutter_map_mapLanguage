@@ -15,11 +15,12 @@ dependencies:
   flutter_plugin_android_lifecycle: ^2.0.5
   plugin_platform_interface: ^2.0.2
   stream_transform: ^2.0.0
+  amap_flutter_base: ^3.0.0
 
-  amap_flutter_base:
-    git:
-      url: https://gitee.com/rui_yu/amap_flutter_base
-      ref: 'd07827a9'
+#  amap_flutter_base:
+#    git:
+#      url: https://gitee.com/rui_yu/amap_flutter_base
+#      ref: 'd07827a9'
 
 dev_dependencies:
   flutter_test:

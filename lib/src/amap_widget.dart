@@ -19,7 +19,7 @@ class AMapWidget extends StatefulWidget {
     this.privacyStatement,
     this.apiKey,
     this.initialCameraPosition = const CameraPosition(
-      target: LatLng(latitude: 39.909187, longitude: 116.397451),
+      target: LatLng(39.909187, 116.397451),
       zoom: 10,
     ),
     this.mapType = MapType.normal,
@@ -48,6 +48,7 @@ class AMapWidget extends StatefulWidget {
     this.markers = const <Marker>{},
     this.polylines = const <Polyline>{},
     this.polygons = const <Polygon>{},
+    this.mapLanguage = '0',
   }) : super(key: key);
 
   /// 高德开放平台的key
@@ -138,6 +139,10 @@ class AMapWidget extends StatefulWidget {
   ///
   /// 高德SDK合规使用方案请参考：https://lbs.amap.com/news/sdkhgsy
   final AMapPrivacyStatement? privacyStatement;
+
+  /// AMapWidget和_AMapOptions中增加
+  /// 中文:@0: 英文:@1.
+  final String mapLanguage;
 
   @override
   _MapState createState() => _MapState();
@@ -296,6 +301,7 @@ class _AMapOptions {
     this.scrollGesturesEnabled,
     this.tiltGesturesEnabled,
     this.zoomGesturesEnabled,
+    this.mapLanguage='0',
   });
 
   /// 地图类型
@@ -343,6 +349,10 @@ class _AMapOptions {
   /// 是否支持仰角手势
   final bool? tiltGesturesEnabled;
 
+  /// AMapWidget和_AMapOptions中增加
+  /// 中文:@0: 英文:@1.
+  final String mapLanguage;
+
   static _AMapOptions fromWidget(AMapWidget map) {
     return _AMapOptions(
       mapType: map.mapType,
@@ -360,6 +370,7 @@ class _AMapOptions {
       zoomGesturesEnabled: map.zoomGesturesEnabled,
       customStyleOptions: map.customStyleOptions?.clone(),
       myLocationStyleOptions: map.myLocationStyleOptions?.clone(),
+      mapLanguage: map.mapLanguage,
     );
   }
 
@@ -380,7 +391,9 @@ class _AMapOptions {
       'tiltGesturesEnabled': tiltGesturesEnabled,
       'zoomGesturesEnabled': zoomGesturesEnabled,
       'myLocationStyle': myLocationStyleOptions?.clone().toMap(),
-    }..removeAllEmptyEntry();
+      'mapLanguage': mapLanguage,
+    }
+      ..removeAllEmptyEntry();
   }
 
   Map<String, dynamic> _updatesMap(_AMapOptions newOptions) {
@@ -388,8 +401,8 @@ class _AMapOptions {
 
     return newOptions.toMap()
       ..removeWhere(
-        (String key, dynamic value) =>
-            (_checkChange(key, prevOptionsMap[key], value)),
+            (String key, dynamic value) =>
+        (_checkChange(key, prevOptionsMap[key], value)),
       );
   }
 

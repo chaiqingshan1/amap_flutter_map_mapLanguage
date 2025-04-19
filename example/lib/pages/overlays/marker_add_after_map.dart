@@ -18,8 +18,8 @@ class _Body extends StatefulWidget {
 
 class _BodyState extends State<_Body> {
   static final LatLng defaultPosition = const LatLng(
-    latitude: 39.909187,
-    longitude: 116.397451,
+    39.909187,
+    116.397451,
   );
 
   //需要先设置一个空的map赋值给AMapWidget的markers，否则后续无法添加marker
@@ -29,8 +29,8 @@ class _BodyState extends State<_Body> {
   //添加一个marker
   void _addMarker() {
     final _markerPosition = LatLng(
-      latitude: _currentLatLng.latitude,
-      longitude: _currentLatLng.longitude + 2 / 1000,
+      _currentLatLng.latitude,
+      _currentLatLng.longitude + 2 / 1000,
     );
     final Marker marker = Marker(
       position: _markerPosition,

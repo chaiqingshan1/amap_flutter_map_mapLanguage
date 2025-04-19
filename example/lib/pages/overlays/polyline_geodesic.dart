@@ -43,8 +43,8 @@ class _State extends State<_Body> {
     final List<LatLng> points = <LatLng>[];
     final int polylineCount = _polylines.length;
     final int offset = polylineCount * (-1);
-    points.add(LatLng(latitude: 39.905151 + offset, longitude: 116.401726));
-    points.add(LatLng(latitude: 38.905151 + offset, longitude: 70.401726));
+    points.add(LatLng(39.905151 + offset, 116.401726));
+    points.add(LatLng(38.905151 + offset, 70.401726));
     return points;
   }
 
@@ -61,8 +61,8 @@ class _State extends State<_Body> {
     });
     // 移动到合适的范围
     LatLngBounds bound = LatLngBounds(
-      southwest: LatLng(latitude: 25.0, longitude: 70.0),
-      northeast: LatLng(latitude: 45, longitude: 117),
+      southwest: LatLng(25.0, 70.0),
+      northeast: LatLng(45, 117),
     );
     CameraUpdate update = CameraUpdate.newLatLngBounds(bound, 10);
     _controller?.moveCamera(update);

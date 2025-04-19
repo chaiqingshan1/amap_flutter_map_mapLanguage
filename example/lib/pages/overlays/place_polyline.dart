@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:amap_flutter_base/amap_flutter_base.dart';
 import 'package:amap_flutter_map/amap_flutter_map.dart';
 import 'package:amap_flutter_map_example/base_page.dart';
@@ -6,6 +8,7 @@ import 'package:flutter/material.dart';
 
 class PolylineDemoPage extends BasePage {
   PolylineDemoPage(String title, String subTitle) : super(title, subTitle);
+
   @override
   Widget build(BuildContext context) {
     return _Body();
@@ -39,11 +42,11 @@ class _State extends State<_Body> {
     final List<LatLng> points = <LatLng>[];
     final int polylineCount = _polylines.length;
     final double offset = polylineCount * -(0.01);
-    points.add(LatLng(latitude: 39.938698 + offset, longitude: 116.275177));
-    points.add(LatLng(latitude: 39.966069 + offset, longitude: 116.289253));
-    points.add(LatLng(latitude: 39.944226 + offset, longitude: 116.306076));
-    points.add(LatLng(latitude: 39.966069 + offset, longitude: 116.322899));
-    points.add(LatLng(latitude: 39.938698 + offset, longitude: 116.336975));
+    points.add(LatLng(39.938698 + offset, 116.275177));
+    points.add(LatLng(39.966069 + offset, 116.289253));
+    points.add(LatLng(39.944226 + offset, 116.306076));
+    points.add(LatLng(39.966069 + offset, 116.322899));
+    points.add(LatLng(39.938698 + offset, 116.336975));
     return points;
   }
 
@@ -82,7 +85,8 @@ class _State extends State<_Body> {
       }
 
       setState(() {
-        _polylines[selectedPolylineId!] = selectedPolyline.copyWith(widthParam: currentWidth);
+        _polylines[selectedPolylineId!] =
+            selectedPolyline.copyWith(widthParam: currentWidth);
       });
     } else {
       print('无选中的Polyline，无法修改宽度');
@@ -126,7 +130,8 @@ class _State extends State<_Body> {
       capType = CapType.butt;
     }
     setState(() {
-      _polylines[selectedPolylineId!] = polyline.copyWith(capTypeParam: capType);
+      _polylines[selectedPolylineId!] =
+          polyline.copyWith(capTypeParam: capType);
     });
   }
 
@@ -177,7 +182,7 @@ class _State extends State<_Body> {
     List<LatLng> currentPoints = polyline.points;
     List<LatLng> newPoints = <LatLng>[];
     newPoints.addAll(currentPoints);
-    newPoints.add(LatLng(latitude: 39.835347, longitude: 116.34575));
+    newPoints.add(LatLng(39.835347, 116.34575));
 
     setState(() {
       _polylines[selectedPolylineId!] = polyline.copyWith(
@@ -198,7 +203,15 @@ class _State extends State<_Body> {
 
   @override
   Widget build(BuildContext context) {
+    var mapLanguage = "";
+    if (Platform.isIOS) {
+      mapLanguage = "0"; //"0" 中文 : "1"  英文;
+    } else if (Platform.isAndroid) {
+      mapLanguage = "zh_cn"; //"zh_cn" 中文 : "en" 英文;
+    }
+
     final AMapWidget map = AMapWidget(
+      mapLanguage: mapLanguage,
       onMapCreated: _onMapCreated,
       polylines: Set<Polyline>.of(_polylines.values),
     );

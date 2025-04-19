@@ -353,6 +353,11 @@ public class MapController
     }
 
     @Override
+    public void setMapLanguage(String mapLanguage) {
+        amap.setMapLanguage(mapLanguage);
+    }
+
+    @Override
     public void setInitialMarkers(Object initialMarkers) {
         //不实现
     }

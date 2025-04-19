@@ -20,8 +20,8 @@ class _Body extends StatefulWidget {
 
 class _BodyState extends State<_Body> {
   final LatLng mapCenter = const LatLng(
-    latitude: 39.909187,
-    longitude: 116.397451,
+    39.909187,
+    116.397451,
   );
   final Map<String, Marker> _initMarkerMap = <String, Marker>{};
 
@@ -29,8 +29,8 @@ class _BodyState extends State<_Body> {
   Widget build(BuildContext context) {
     for (int i = 0; i < 10; i++) {
       LatLng position = LatLng(
-        latitude: mapCenter.latitude + sin(i * pi / 12.0) / 20.0,
-        longitude: mapCenter.longitude + cos(i * pi / 12.0) / 20.0,
+        mapCenter.latitude + sin(i * pi / 12.0) / 20.0,
+        mapCenter.longitude + cos(i * pi / 12.0) / 20.0,
       );
       Marker marker = Marker(position: position);
       _initMarkerMap[marker.id] = marker;

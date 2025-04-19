@@ -23,7 +23,7 @@ class _MapUiBody extends StatefulWidget {
 class _MapUiBodyState extends State<_MapUiBody> {
   //默认显示在北京天安门
   static final CameraPosition _kInitialPosition = const CameraPosition(
-    target: LatLng(latitude: 39.909187, longitude: 116.397451),
+    target: LatLng(39.909187, 116.397451),
     zoom: 10.0,
   );
 
@@ -395,7 +395,7 @@ class _MapUiBodyState extends State<_MapUiBody> {
     _controller.moveCamera(
       CameraUpdate.newCameraPosition(
         CameraPosition(
-          target: LatLng(latitude: 39.993306, longitude: 116.473004),
+          target: LatLng(39.993306, 116.473004),
           zoom: 18,
           tilt: 30,
           bearing: 30,

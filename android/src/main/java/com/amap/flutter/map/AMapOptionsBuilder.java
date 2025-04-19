@@ -36,6 +36,8 @@ class AMapOptionsBuilder implements AMapOptionsSink {
     private boolean buildingsEnabled = true;
     private boolean labelsEnabled = true;
 
+    private String mapLanguage = "zh_cn";
+
     private float anchorX = 2.0F;
     private float anchorY = 2.0F;
 
@@ -54,6 +56,8 @@ class AMapOptionsBuilder implements AMapOptionsSink {
             options.zoomControlsEnabled(false);
             final AMapPlatformView aMapPlatformView = new AMapPlatformView(id, context, binaryMessenger, lifecycleProvider, options);
 
+
+            aMapPlatformView.getMapController().setMapLanguage(mapLanguage);
 
             if (null != customMapStyleOptions) {
                 aMapPlatformView.getMapController().setCustomMapStyleOptions(customMapStyleOptions);
@@ -102,6 +106,12 @@ class AMapOptionsBuilder implements AMapOptionsSink {
             LogUtil.e(CLASS_NAME, "build", e);
         }
         return null;
+    }
+
+
+    @Override
+    public void setMapLanguage(String mapLanguage) {
+        this.mapLanguage = mapLanguage;
     }
 
     @Override

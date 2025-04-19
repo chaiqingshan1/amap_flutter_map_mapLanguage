@@ -28,8 +28,8 @@ class _Body extends StatefulWidget {
 
 class _State extends State<_Body> {
   static final LatLng mapCenter = const LatLng(
-    latitude: 39.909187,
-    longitude: 116.397451,
+    39.909187,
+    116.397451,
   );
 
   Map<String, Marker> _markers = <String, Marker>{};
@@ -76,8 +76,8 @@ class _State extends State<_Body> {
   void _add() {
     final int markerCount = _markers.length;
     LatLng markPostion = LatLng(
-      latitude: mapCenter.latitude + sin(markerCount * pi / 12.0) / 20.0,
-      longitude: mapCenter.longitude + cos(markerCount * pi / 12.0) / 20.0,
+      mapCenter.latitude + sin(markerCount * pi / 12.0) / 20.0,
+      mapCenter.longitude + cos(markerCount * pi / 12.0) / 20.0,
     );
     final Marker marker = Marker(
       position: markPostion,
@@ -176,8 +176,8 @@ class _State extends State<_Body> {
     setState(() {
       _markers[selectedMarkerId!] = marker.copyWith(
         positionParam: LatLng(
-          latitude: mapCenter.latitude + offset.dy,
-          longitude: mapCenter.longitude + offset.dx,
+          mapCenter.latitude + offset.dy,
+          mapCenter.longitude + offset.dx,
         ),
       );
     });
