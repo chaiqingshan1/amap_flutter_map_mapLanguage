@@ -21,6 +21,8 @@ class _ShowMapPageState extends State<_ShowMapPageBody> {
   List<Widget> _approvalNumberWidget = <Widget>[];
   @override
   Widget build(BuildContext context) {
+    //可添加设置地图语言
+
     final AMapWidget map = AMapWidget(
       apiKey: ConstConfig.amapApiKeys,
       onMapCreated: onMapCreated,
